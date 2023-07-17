@@ -1,8 +1,6 @@
 window.addEventListener("load", function() {
   let form = document.getElementById("form");
   let submit = document.querySelector("#form button[type='submit']");
-
-  submit.addEventListener("click", handleFormSubmission);
 });
 
 function creditCard(input) {
@@ -42,26 +40,12 @@ function creditCard(input) {
   }
 }
 
-function handleFormSubmission(event) {
+function handleSubmit(event) {
   event.preventDefault();
-  let input = document.getElementById("credit-card-number").value;
-  document.getElementById("output").innerText = creditCard(input);
+  const creditCardNumber = document.getElementById("credit-card-number").value;
+  const output = document.getElementById("output");
+  const result = creditCard(creditCardNumber);
+  output.textContent = result;
 }
 
-
-// for (let index = digitsArray.length - 2; index <= 0;  index -= 2)
-
-// function creditCard(cardNumber) {
-//   const digits = [1, 2, 3, 4, r, 7, 8, 9, 10, e, 12, 13, 15, 16]
-//   // removes and characters that are nt numbers
-//   const digitsOnly = cardNumber.replace(/\D/g, '');
-//   // checks to see wether or not ther are 16 characters total
-//   if (digitsOnly.length !== 16) {
-//     return "This card number is not valid";
-//   }
-//   const digitsArray = Array.from(digitsOnly, Number);
-// }
-
-// let digitsArray = Array.from(String(input), Number);
-
-
+document.getElementById("form").addEventListener("submit", handleSubmit);
